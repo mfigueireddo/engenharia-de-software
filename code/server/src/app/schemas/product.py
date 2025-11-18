@@ -9,8 +9,10 @@ class ProdutoSchema(BaseModel):
     """Payload esperado para criação de produtos."""
 
     nome: str
-    quantidade: Optional[int] = None
-    valor: float
+    marca: str
+    categoria: str
+    preco: float
+    preco_promocional: Optional[float]
 
 
 class ProdutoBuscaSchema(BaseModel):
@@ -36,8 +38,10 @@ class ProdutoViewSchema(BaseModel):
 
     id: int
     nome: str
-    quantidade: Optional[int]
-    valor: float
+    marca: str
+    categoria: str
+    preco: float
+    preco_promocional: Optional[float]
     total_cometarios: int
     comentarios: List[ComentarioSchema]
 
@@ -52,16 +56,20 @@ class ProdutoEditSchema(BaseModel):
 
     id: int
     nome: Optional[str] = None
-    quantidade: Optional[int] = None
-    valor: Optional[float] = None
+    marca: Optional[str] = None
+    categoria: Optional[str] = None
+    preco: Optional[float] = None
+    preco_promocional: Optional[float] = None
 
 def apresenta_produto(produto: Product) -> dict:
     """Converte a entidade de domínio para resposta JSON."""
     return {
         "id": produto.id,
         "nome": produto.nome,
-        "quantidade": produto.quantidade,
-        "valor": produto.valor,
+        "marca": produto.marca,
+        "categoria": produto.categoria,
+        "preco": produto.preco,
+        "preco_promocional": produto.preco_promocional,
         "total_cometarios": len(produto.comentarios),
         "comentarios": [
             {"texto": comentario.texto} for comentario in produto.comentarios
@@ -74,10 +82,12 @@ def apresenta_produtos(produtos: List[Product]) -> dict:
     return {
         "produtos": [
             {
+                "id": produto.id,
                 "nome": produto.nome,
-                "quantidade": produto.quantidade,
-                "valor": produto.valor,
-                "id": produto.id
+                "marca": produto.marca,
+                "categoria": produto.categoria,
+                "preco": produto.preco,
+                "preco_promocional": produto.preco_promocional,
             }
             for produto in produtos
         ]

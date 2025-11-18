@@ -21,8 +21,10 @@ class SqlAlchemyProductRepository(ProductRepository):
         try:
             model = ProductModel(
                 nome=product.nome,
-                quantidade=product.quantidade,
-                valor=product.valor,
+                marca=product.marca,
+                categoria=product.categoria,
+                preco=product.preco,
+                preco_promocional=product.preco_promocional,
                 data_insercao=product.data_insercao,
             )
             session.add(model)
@@ -133,10 +135,14 @@ class SqlAlchemyProductRepository(ProductRepository):
             # Atualiza apenas os campos informados
             if product.nome is not None:
                 model.nome = product.nome
-            if product.quantidade is not None:
-                model.quantidade = product.quantidade
+            if product.marca is not None:
+                model.marca = product.marca
+            if product.categoria is not None:
+                model.categoria = product.categoria
+            if product.preco is not None:
+                model.preco = product.preco
             if product.valor is not None:
-                model.valor = product.valor
+                model.preco_promocional = product.preco_promocional
 
             session.commit()
             session.refresh(model)

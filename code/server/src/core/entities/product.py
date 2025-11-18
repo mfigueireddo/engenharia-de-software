@@ -10,10 +10,13 @@ class Product:
     """Domain representation of a product."""
 
     nome: str
-    quantidade: Optional[int]
-    valor: float
-    data_insercao: datetime = field(default_factory=datetime.utcnow)
+    marca: str
+    categoria: str
+    preco: float
+    preco_promocional: Optional[float]
+
     id: Optional[int] = None
+    data_insercao: datetime = field(default_factory=datetime.utcnow)
     comentarios: List[Comment] = field(default_factory=list)
 
     def add_comment(self, comment: Comment) -> None:

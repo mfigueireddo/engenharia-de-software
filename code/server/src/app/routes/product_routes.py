@@ -46,7 +46,7 @@ def register_product_routes(
     def add_produto(form: ProdutoSchema):
         try:
             produto = add_use_case.execute(
-                form.nome, form.quantidade, form.valor
+                form.nome, form.marca, form.categoria, form.preco, form.preco_promocional
             )
             return apresenta_produto(produto), 200
         except ProductAlreadyExists as error:
@@ -98,7 +98,7 @@ def register_product_routes(
     def edit_produto(form: ProdutoEditSchema):
         try:
             produto = edit_use_case.execute(
-                form.id, form.nome, form.quantidade, form.valor
+                form.id, form.nome, form.marca, form.categoria, form.preco, form.preco_promocional
             )
             return apresenta_produto(produto), 200
         except ProductNotFound as error:

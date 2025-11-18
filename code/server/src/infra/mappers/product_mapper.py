@@ -10,8 +10,10 @@ def to_domain(model: ProductModel) -> Product:
     return Product(
         id=model.id,
         nome=model.nome,
-        quantidade=model.quantidade,
-        valor=model.valor,
+        marca=model.marca,
+        categoria=model.categoria,
+        preco=model.preco,
+        preco_promocional=model.preco_promocional,
         data_insercao=model.data_insercao,
         comentarios=comentarios,
     )

@@ -11,8 +11,10 @@ class ProductModel(Base):
 
     id: Optional[int] = Column("pk_produto", Integer, primary_key=True)
     nome = Column(String(140), unique=True, nullable=False)
-    quantidade = Column(Integer)
-    valor = Column(Float, nullable=False)
+    marca = Column(String(140), unique=False, nullable=False)
+    categoria = Column(String(140), unique=False, nullable=False)
+    preco = Column(Float, nullable=False)
+    preco_promocional = Column(Float)
     data_insercao = Column(DateTime, default=datetime.utcnow)
 
     comentarios = relationship(

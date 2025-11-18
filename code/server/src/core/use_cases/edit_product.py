@@ -13,7 +13,7 @@ class EditProductUseCase(UseCase):
         self._repository = repository
 
     def execute(
-        self, id: int, nome: Optional[str], quantidade: Optional[int], valor: Optional[float]
+        self, id: int, nome: Optional[str], marca: Optional[str], categoria: Optional[str], preco: Optional[float], preco_promocional: Optional[float]
     ) -> Product:
         
         produto = self._repository.get_by_id(id)
@@ -22,9 +22,13 @@ class EditProductUseCase(UseCase):
 
         if nome is not None:
             produto.nome = nome
-        if quantidade is not None:
-            produto.quantidade = quantidade
-        if valor is not None:
-            produto.valor = valor
+        if marca is not None:
+            produto.marca = marca
+        if categoria is not None:
+            produto.categoria = categoria
+        if preco is not None:
+            produto.preco = preco
+        if preco_promocional is not None:
+            produto.preco_promocional = preco_promocional
 
         return self._repository.update(id, produto)
