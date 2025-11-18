@@ -50,9 +50,9 @@ def register_product_routes(
             )
             return apresenta_produto(produto), 200
         except ProductAlreadyExists as error:
-            return {"mesage": str(error)}, 409
+            return {"message": str(error)}, 409
         except Exception:
-            return {"mesage": "Não foi possível salvar novo item :/"}, 400
+            return {"message": "Não foi possível salvar novo item :/"}, 400
 
     @app.get(
         "/produtos",
@@ -75,7 +75,7 @@ def register_product_routes(
             produto = get_use_case.execute(query.id)
             return apresenta_produto(produto), 200
         except ProductNotFound as error:
-            return {"mesage": str(error)}, 404
+            return {"message": str(error)}, 404
 
     @app.delete(
         "/produto",
@@ -86,9 +86,9 @@ def register_product_routes(
         nome = unquote(unquote(query.nome))
         try:
             delete_use_case.execute(nome)
-            return {"mesage": "Produto removido", "nome": nome}, 200
+            return {"message": "Produto removido", "nome": nome}, 200
         except ProductNotFound as error:
-            return {"mesage": str(error)}, 404
+            return {"message": str(error)}, 404
 
     @app.patch(
         "/produto",
@@ -102,7 +102,7 @@ def register_product_routes(
             )
             return apresenta_produto(produto), 200
         except ProductNotFound as error:
-            return {"mesage": str(error)}, 410
+            return {"message": str(error)}, 410
         except Exception:
-            return {"mesage": "Não foi possível salvar novo item :/"}, 400
+            return {"message": "Não foi possível salvar novo item :/"}, 400
 

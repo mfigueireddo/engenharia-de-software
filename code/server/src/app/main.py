@@ -13,7 +13,7 @@ from src.app.routes import (
     register_docs_routes,
     register_health_routes,
     register_product_routes,
-    register_pages_routes
+    register_pages_routes # Temporário
 )
 from src.infra.logging import configure_logging
 
@@ -47,14 +47,12 @@ def create_app() -> OpenAPI:
         delete_use_case=get_delete_product_use_case(),
         edit_use_case= get_edit_product_use_case()
     )
-    register_pages_routes(application)
+    register_pages_routes(application) # Temporário
     register_health_routes(application, get_health_check_use_case())
 
     return application
 
-
 app = create_app()
-
 
 if __name__ == "__main__":
     app.run(debug=False)

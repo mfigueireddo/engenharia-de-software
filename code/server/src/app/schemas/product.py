@@ -47,7 +47,7 @@ class ProdutoViewSchema(BaseModel):
 class ProdutoDelSchema(BaseModel):
     """Retorno após remoção de um produto."""
 
-    mesage: str
+    message: str
     nome: str
 
 class ProdutoEditSchema(BaseModel):
