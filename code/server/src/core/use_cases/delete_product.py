@@ -2,7 +2,6 @@ from src.core.exceptions import ProductNotFound
 from src.core.interfaces.product_repository import ProductRepository
 from src.core.interfaces.usecase_interface import UseCase
 
-
 class DeleteProductUseCase(UseCase):
     """Use case responsible for removing a product by name."""
 

@@ -5,7 +5,6 @@ from typing import List, Optional
 
 from src.core.entities.product import Product
 
-
 class ProductRepository(ABC):
     """Port defining the contract for product persistence."""
 

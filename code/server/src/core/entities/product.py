@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import List, Optional
+from typing import Optional
 
 @dataclass
 class Product:
@@ -12,5 +12,5 @@ class Product:
     preco: float
     preco_promocional: Optional[float]
 
-    id: Optional[int] = None
+    id: Optional[int] = None # Tem que ficar por último!
     data_insercao: datetime = field(default_factory=datetime.utcnow)

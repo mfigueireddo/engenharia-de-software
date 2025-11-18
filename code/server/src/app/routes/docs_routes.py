@@ -6,7 +6,6 @@ home_tag = Tag(
     description="Seleção de documentação: Swagger, Redoc ou RapiDoc",
 )
 
-
 def register_docs_routes(app) -> None:
     @app.get("/", tags=[home_tag])
     def home():

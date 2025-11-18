@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Any
 
-
 class UseCase(ABC):
     """Interface base para casos de uso."""
 

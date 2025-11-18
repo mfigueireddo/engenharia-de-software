@@ -3,7 +3,6 @@ from typing import List, Optional
 from pydantic import BaseModel
 from src.core.entities.product import Product
 
-
 class ProdutoSchema(BaseModel):
     """Payload esperado para criação de produtos."""
 
@@ -42,12 +41,6 @@ class ProdutoViewSchema(BaseModel):
     preco: float
     preco_promocional: Optional[float]
 
-class ProdutoDelSchema(BaseModel):
-    """Retorno após remoção de um produto."""
-
-    message: str
-    nome: str
-
 class ProdutoEditSchema(BaseModel):
 
     id: int
@@ -56,6 +49,14 @@ class ProdutoEditSchema(BaseModel):
     categoria: Optional[str] = None
     preco: Optional[float] = None
     preco_promocional: Optional[float] = None
+
+class ProdutoDelSchema(BaseModel):
+    """Retorno após remoção de um produto."""
+
+    message: str
+    nome: str
+
+# ======= Devolução ao JS =======
 
 def apresenta_produto(produto: Product) -> dict:
     """Converte a entidade de domínio para resposta JSON."""

@@ -7,7 +7,6 @@ health_tag = Tag(
     description="Verificação de disponibilidade do serviço",
 )
 
-
 def register_health_routes(app, health_use_case: HealthCheckUseCase) -> None:
     @app.get(
         "/health",
