@@ -34,14 +34,13 @@ def register_product_routes(
     delete_use_case: DeleteProductUseCase,
     edit_use_case: EditProductUseCase
 ) -> None:
+    
+    # ======= Adição =======
+
     @app.post(
         "/produto",
         tags=[produto_tag],
-        responses={
-            "200": ProdutoViewSchema,
-            "409": ErrorSchema,
-            "400": ErrorSchema,
-        },
+        responses={"200": ProdutoViewSchema,"409": ErrorSchema,"400": ErrorSchema,}
     )
     def add_produto(form: ProdutoSchema):
         try:
@@ -54,6 +53,8 @@ def register_product_routes(
         except Exception:
             return {"message": "Não foi possível salvar novo item :/"}, 400
 
+    # ======= Obtenção múltipla =======
+
     @app.get(
         "/produtos",
         tags=[produto_tag],
@@ -64,6 +65,8 @@ def register_product_routes(
         if not produtos:
             return {"produtos": []}, 200
         return apresenta_produtos(produtos), 200
+
+    # ======= Obtenção única =======
 
     @app.get(
         "/produto",
@@ -77,6 +80,8 @@ def register_product_routes(
         except ProductNotFound as error:
             return {"message": str(error)}, 404
 
+    # ======= Deleção =======
+
     @app.delete(
         "/produto",
         tags=[produto_tag],
@@ -89,6 +94,8 @@ def register_product_routes(
             return {"message": "Produto removido", "nome": nome}, 200
         except ProductNotFound as error:
             return {"message": str(error)}, 404
+
+    # ======= Edição =======
 
     @app.patch(
         "/produto",
@@ -105,4 +112,3 @@ def register_product_routes(
             return {"message": str(error)}, 410
         except Exception:
             return {"message": "Não foi possível salvar novo item :/"}, 400
-

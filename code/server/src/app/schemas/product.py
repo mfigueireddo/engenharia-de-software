@@ -11,7 +11,7 @@ class ProdutoSchema(BaseModel):
     marca: str
     categoria: str
     preco: float
-    preco_promocional: Optional[float]
+    preco_promocional: Optional[float] = None
 
 
 class ProdutoBuscaSchema(BaseModel):
@@ -41,8 +41,6 @@ class ProdutoViewSchema(BaseModel):
     categoria: str
     preco: float
     preco_promocional: Optional[float]
-    total_cometarios: int
-
 
 class ProdutoDelSchema(BaseModel):
     """Retorno após remoção de um produto."""
