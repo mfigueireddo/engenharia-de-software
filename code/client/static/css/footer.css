@@ -1,0 +1,20 @@
+footer {
+    width: 100%; /* Footer ocupa toda a largura */
+    background-color: #343a40; /* Fundo escuro para contraste */
+    color: white; /* Texto branco */
+    padding: 16px; /* Espaçamento interno */
+    text-align: center; /* Centraliza conteúdo do footer */
+    margin-top: auto; /* Empurra o footer para o final da página */
+}
+
+footer nav ul {
+    list-style: none; /* Remove marcadores */
+    display: flex; /* Itens lado a lado */
+    justify-content: center; /* Centralizados */
+    gap: 20px; /* Espaçamento entre os itens */
+}
+
+footer nav a {
+    color: white; /* Links brancos */
+    text-decoration: none; /* Remove sublinhado */
+}

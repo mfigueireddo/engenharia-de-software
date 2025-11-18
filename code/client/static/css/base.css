@@ -1,0 +1,21 @@
+* {
+    font-family: Arial, Helvetica, sans-serif; /* Define uma fonte padrão para todos os elementos */
+    box-sizing: border-box; /* Garante que padding/border não aumentem o tamanho dos elementos */
+    margin: 0; /* Remove margens padrão do navegador */
+    padding: 0; /* Remove paddings padrão do navegador */
+}
+
+body {
+    display: flex; /* Faz o body funcionar como container flex */
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    align-items: center; /* Centraliza tudo horizontalmente */
+    min-height: 100vh; /* Garante que a página ocupe toda a altura disponível */
+    background-color: #f7f7f7; /* Dá um fundo leve para destacar header/footer e conteúdo */
+}
+
+main {
+    max-width: 900px; /* Limita largura do conteúdo */
+    width: 100%; /* Faz o main ocupar a largura disponível */
+    padding: 20px; /* Espaçamento interno */
+    text-align: center; /* Centraliza conteúdo dentro do main */
+}

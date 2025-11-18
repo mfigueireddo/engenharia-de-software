@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<!-- Ajuste de acessibilidade -->
+<html lang="pt-BR">
+
+<head>
+
+    <!-- Suporte à caracteres com acentuação -->
+    <meta charset="UTF-8">
+
+    <!-- Pede que o navegador Edge use o modo mais moderno possível -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS base das páginas -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+
+    <!-- CSS específico de cada página -->
+    {% block page_css %} {% endblock %} 
+
+    <!-- Instância única do título da página -->
+    <title>{% block page_title %}Engenharia de Software{% endblock %}</title>
+
+</head>
+
+<body>
+
+    <!-- Header em comum para todas as páginas -->
+    {% include "header.html" %}
+
+    <!-- Conteúdo específico de cada página -->
+    <main>{% block page_content %}{% endblock %}</main>
+
+    <!-- Footer em comum para todas as páginas -->
+    {% include "footer.html" %}
+
+    <!-- JavaScript base das páginas -->
+    <script src="{{ url_for('static', filename='javascript/scripts.js') }}"></script>
+
+    <!-- JavaScriptespecífico de cada página -->
+    {% block page_javascript %} {% endblock %} 
+
+</body>

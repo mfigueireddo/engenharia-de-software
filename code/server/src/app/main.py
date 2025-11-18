@@ -15,6 +15,7 @@ from src.app.routes import (
     register_docs_routes,
     register_health_routes,
     register_product_routes,
+    register_pages_routes
 )
 from src.infra.logging import configure_logging
 
@@ -24,11 +25,19 @@ info = Info(
     title=config_service.get_service_name(),
     version=config_service.get_service_version(),
 )
-
+import os
+tempBASE_DIR = os.path.dirname(os.path.abspath(__file__))
+tempTEMPLATES_DIR = os.path.join(tempBASE_DIR, "../../../client/templates")
+tempSTATIC_DIR = os.path.join(tempBASE_DIR, "../../../client/static")
 
 def create_app() -> OpenAPI:
     configure_logging()
-    application = OpenAPI(__name__, info=info)
+    application = OpenAPI(
+        __name__, 
+        info=info,
+        template_folder=tempTEMPLATES_DIR,
+        static_folder=tempSTATIC_DIR, 
+        )
     CORS(application)
 
     register_docs_routes(application)
@@ -40,6 +49,7 @@ def create_app() -> OpenAPI:
         delete_use_case=get_delete_product_use_case(),
         edit_use_case= get_edit_product_use_case()
     )
+    register_pages_routes(application)
     register_comment_routes(application, get_add_comment_use_case())
     register_health_routes(application, get_health_check_use_case())
 

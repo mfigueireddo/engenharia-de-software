@@ -1,0 +1,101 @@
+/* ============================= */
+/*  SEÇÃO DE NOVO ITEM (FORM)   */
+/* ============================= */
+
+.newItem {
+    margin: 40px auto; /* Espaço acima/abaixo */
+    display: flex; /* Coloca os inputs lado a lado */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 14px; /* Espaço entre inputs */
+    flex-wrap: wrap; /* Permite quebrar linha no mobile */
+}
+
+.newItem input {
+    padding: 10px; /* Aumenta área clicável */
+    border: 2px solid #ccc; /* Borda suave */
+    border-radius: 6px; /* Bordas arredondadas */
+    font-size: 15px; /* Texto maior */
+    min-width: 180px; /* Tamanho mínimo */
+}
+
+.newItem input:focus {
+    outline: none; /* Remove outline nativo */
+    border-color: #0d6efd; /* Cor de foco azul */
+    box-shadow: 0 0 4px rgba(13, 110, 253, 0.4); /* Glow suave */
+}
+
+.addBtn {
+    background-color: #0d6efd; /* Azul principal */
+    color: white; /* Texto branco */
+    border: none; /* Remove borda nativa */
+    padding: 10px 18px; /* Tamanho confortável */
+    border-radius: 6px; /* Arredondado */
+    cursor: pointer; /* Indica clique */
+    font-size: 16px; /* Tamanho texto */
+    font-weight: bold; /* Destaca */
+}
+
+.addBtn:hover {
+    background-color: #0b5ed7; /* Azul um pouco mais escuro */
+}
+
+
+/* ============================= */
+/*  TABELA DE ITENS              */
+/* ============================= */
+
+.items {
+    display: flex; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza */
+}
+
+table {
+    border-collapse: collapse; /* Remove espaços entre células */
+    width: 80%; /* Largura da tabela */
+    max-width: 1000px; /* Valor máximo */
+    background: white; /* Fundo branco */
+    padding: 20px; /* Margem interna */
+    border-radius: 10px; /* Arredondamento geral */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1); /* Sombra leve */
+}
+
+th, td {
+    padding: 12px 14px; /* Espaço interno */
+    text-align: center; /* Centraliza dados */
+    font-size: 15px; /* Tamanho uniforme */
+}
+
+th {
+    background-color: #0d6efd; /* fundo azul */
+    color: white; /* texto branco */
+    font-weight: bold; /* destaque */
+}
+
+tr:nth-child(even) {
+    background-color: #f4f4f4; /* Zebrinha */
+}
+
+
+/* ============================= */
+/*  ÍCONE DE CONFIGURAÇÕES       */
+/* ============================= */
+
+#settings_icon {
+    font-size: 20px; /* Aumenta ícone */
+    cursor: pointer; /* Indica ação */
+    user-select: none; /* Impede seleção */
+}
+
+
+/* ============================= */
+/*  AJUSTES GERAIS               */
+/* ============================= */
+
+body {
+    background-color: #f2f2f2; /* Fundo neutro suave */
+}
+
+main {
+    margin-top: 40px; /* Distância abaixo do header */
+    margin-bottom: 40px; /* Distância acima do footer */
+}
