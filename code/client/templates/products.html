@@ -8,9 +8,11 @@
 
 <!-- Opções para adicionar um novo item -->
 <section class="newItem">
-    <input type="text" id="newInput" placeholder="Adicionar novo item:">
-    <input type="text" id="newQuantity" placeholder="Quantidade:">
-    <input type="text" id="newPrice" placeholder="Valor:">
+    <input type="text" id="newNome" placeholder="Adicionar novo item:">
+    <input type="text" id="newMarca" placeholder="Marca:">
+    <input type="text" id="newCategoria" placeholder="Categoria:">
+    <input type="text" id="newPreco" placeholder="Preço:">
+    <input type="text" id="newPrecoPromocional" placeholder="Preço promocional:">
     <button onclick="newItem()" class="addBtn">Adicionar</button>
 </section>
 
@@ -19,8 +21,10 @@
     <table id="myTable">
         <tr>
             <th>Nome</th>
-            <th>Quantidade</th>
-            <th>Valor</th>
+            <th>Marca</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Preço promocional</th>
             <th colspan="2" id="settings_icon">⚙️</th>
         </tr>
     </table>

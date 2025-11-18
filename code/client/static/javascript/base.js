@@ -1,9 +1,3 @@
-/****************************************************
- * Função genérica para POST
- * endpoint: URL para enviar
- * fields: objeto JS com pares chave/valor
- * Ex: { nome: "Bola", quantidade: 5, valor: 10 }
- ****************************************************/
 async function apiPost(endpoint, fields) {
     const formData = new FormData();
 
@@ -25,11 +19,6 @@ async function apiPost(endpoint, fields) {
     }
 }
 
-/****************************************************
- * Função genérica para PATCH
- * endpoint: URL para enviar
- * fields: objeto JS com pares chave/valor
- ****************************************************/
 async function apiPatch(endpoint, fields) {
     const formData = new FormData();
 
@@ -50,12 +39,6 @@ async function apiPatch(endpoint, fields) {
     }
 }
 
-/****************************************************
- * Função genérica para DELETE
- * endpoint: URL base
- * paramName: o nome do parâmetro de query (ex: "nome", "id")
- * paramValue: o valor desse parâmetro
- ****************************************************/
 async function apiDelete(endpoint, paramName, paramValue) {
     const url = `${endpoint}?${paramName}=${encodeURIComponent(paramValue)}`;
 
@@ -71,14 +54,6 @@ async function apiDelete(endpoint, paramName, paramValue) {
     }
 }
 
-/*
-API para realizar requisições GET de maneira genérica (retornando um único item)
-
-Parâmetros
-    endpoint: URL a ser enviada
-    itemKey: Chave que contém o item retornado
-    onResult: Callback a ser executada com o item retornado
-*/
 const apiGetOne = async (endpoint, itemKey, onResult) => 
 {
     try 
@@ -110,7 +85,7 @@ const apiGetOne = async (endpoint, itemKey, onResult) =>
     }
 };
 
-const getList = async (endpoint, listKey, onItem) => {
+const apiGetMultiple = async (endpoint, listKey, onItem) => {
     try {
       const response = await fetch(endpoint, { method: 'GET' });
   
