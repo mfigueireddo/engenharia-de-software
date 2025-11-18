@@ -16,10 +16,3 @@ class ProductModel(Base):
     preco = Column(Float, nullable=False)
     preco_promocional = Column(Float)
     data_insercao = Column(DateTime, default=datetime.utcnow)
-
-    comentarios = relationship(
-        "CommentModel",
-        back_populates="produto",
-        cascade="all, delete-orphan",
-        lazy="joined",
-    )

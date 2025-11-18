@@ -1,7 +1,6 @@
 from functools import lru_cache
 
 from src.core.config import EnvConfigService
-from src.core.use_cases.add_comment import AddCommentUseCase
 from src.core.use_cases.add_product import AddProductUseCase
 from src.core.use_cases.delete_product import DeleteProductUseCase
 from src.core.use_cases.get_product import GetProductUseCase
@@ -40,12 +39,6 @@ def get_get_product_use_case() -> GetProductUseCase:
 @lru_cache
 def get_delete_product_use_case() -> DeleteProductUseCase:
     return DeleteProductUseCase(get_product_repository())
-
-
-@lru_cache
-def get_add_comment_use_case() -> AddCommentUseCase:
-    return AddCommentUseCase(get_product_repository())
-
 
 @lru_cache
 def get_health_check_use_case() -> HealthCheckUseCase:

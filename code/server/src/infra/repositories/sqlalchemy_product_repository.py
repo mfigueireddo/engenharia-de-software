@@ -2,10 +2,8 @@ from typing import Callable, List, Optional
 
 from sqlalchemy.exc import IntegrityError, NoResultFound
 from sqlalchemy.orm import Session
-from src.core.entities.comment import Comment
 from src.core.entities.product import Product
 from src.core.interfaces.product_repository import ProductRepository
-from src.infra.db.models.comment_model import CommentModel
 from src.infra.db.models.product_model import ProductModel
 from src.infra.mappers import product_mapper
 
@@ -87,37 +85,7 @@ class SqlAlchemyProductRepository(ProductRepository):
             raise
         finally:
             session.close()
-
-    def add_comment(self, product_id: int, comment: Comment) -> Product:
-        session = self._session_factory()
-        try:
-            product_model = (
-                session.query(ProductModel)
-                .filter(ProductModel.id == product_id)
-                .first()
-            )
-            if not product_model:
-                raise ValueError(
-                    "Produto não encontrado para adicionar comentário."
-                )
-
-            comment_model = CommentModel(
-                texto=comment.texto,
-                data_insercao=comment.data_insercao,
-                produto_id=product_id,
-            )
-            session.add(comment_model)
-            session.commit()
-            session.refresh(product_model)
-            # reload comments for consistent mapping
-            session.refresh(product_model, attribute_names=["comentarios"])
-            return product_mapper.to_domain(product_model)
-        except Exception:
-            session.rollback()
-            raise
-        finally:
-            session.close()
-
+            
     def update(self, product_id: int, product: Product) -> Product:
         """Atualiza os dados de um produto existente pelo ID."""
         session = self._session_factory()

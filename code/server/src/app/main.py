@@ -1,7 +1,6 @@
 from flask_cors import CORS
 from flask_openapi3 import Info, OpenAPI
 from src.app.dependencies import (
-    get_add_comment_use_case,
     get_add_product_use_case,
     get_delete_product_use_case,
     get_env_config_service,
@@ -11,7 +10,6 @@ from src.app.dependencies import (
     get_edit_product_use_case
 )
 from src.app.routes import (
-    register_comment_routes,
     register_docs_routes,
     register_health_routes,
     register_product_routes,
@@ -50,7 +48,6 @@ def create_app() -> OpenAPI:
         edit_use_case= get_edit_product_use_case()
     )
     register_pages_routes(application)
-    register_comment_routes(application, get_add_comment_use_case())
     register_health_routes(application, get_health_check_use_case())
 
     return application

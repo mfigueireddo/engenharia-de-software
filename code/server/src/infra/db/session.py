@@ -6,7 +6,6 @@ from sqlalchemy_utils import create_database, database_exists
 from src.core.config.settings import DATABASE_DIR, DATABASE_URL
 from src.infra.db.base import Base
 from src.infra.db.models import (  # noqa: F401 - ensure metadata
-    CommentModel,
     ProductModel,
 )
 

@@ -8,7 +8,3 @@ class ProductAlreadyExists(CoreError):
 
 class ProductNotFound(CoreError):
     """Raised when a product lookup fails."""
-
-
-class CommentCreationError(CoreError):
-    """Raised when a comment cannot be created for a product."""

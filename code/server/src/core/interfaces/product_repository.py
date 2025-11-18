@@ -3,7 +3,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import List, Optional
 
-from src.core.entities.comment import Comment
 from src.core.entities.product import Product
 
 
@@ -29,10 +28,6 @@ class ProductRepository(ABC):
     @abstractmethod
     def delete_by_name(self, name: str) -> bool:
         """Delete a product by name. Returns True if a row was removed."""
-
-    @abstractmethod
-    def add_comment(self, product_id: int, comment: Comment) -> Product:
-        """Attach a comment to a product and return the updated product."""
 
     @abstractmethod
     def update(self, product_id: int, produto: Product) -> Product:

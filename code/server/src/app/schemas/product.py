@@ -1,7 +1,6 @@
 from typing import List, Optional
 
 from pydantic import BaseModel
-from src.app.schemas.comment import ComentarioSchema
 from src.core.entities.product import Product
 
 
@@ -43,7 +42,6 @@ class ProdutoViewSchema(BaseModel):
     preco: float
     preco_promocional: Optional[float]
     total_cometarios: int
-    comentarios: List[ComentarioSchema]
 
 
 class ProdutoDelSchema(BaseModel):
@@ -69,11 +67,7 @@ def apresenta_produto(produto: Product) -> dict:
         "marca": produto.marca,
         "categoria": produto.categoria,
         "preco": produto.preco,
-        "preco_promocional": produto.preco_promocional,
-        "total_cometarios": len(produto.comentarios),
-        "comentarios": [
-            {"texto": comentario.texto} for comentario in produto.comentarios
-        ],
+        "preco_promocional": produto.preco_promocional
     }
 
 
