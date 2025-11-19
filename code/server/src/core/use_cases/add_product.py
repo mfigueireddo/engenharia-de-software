@@ -15,6 +15,7 @@ class AddProductUseCase(UseCase):
     def execute(
         self, nome: str, marca: str, categoria: str, preco: float, preco_promocional: Optional[float]
     ) -> Product:
+        
         if self._repository.get_by_name(nome):
             raise ProductAlreadyExists(f"Produto '{nome}' já existe.")
 

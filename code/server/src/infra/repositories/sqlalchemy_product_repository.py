@@ -109,7 +109,7 @@ class SqlAlchemyProductRepository(ProductRepository):
                 model.categoria = product.categoria
             if product.preco is not None:
                 model.preco = product.preco
-            if product.valor is not None:
+            if product.preco_promocional is not None and product.preco_promocional > 0:
                 model.preco_promocional = product.preco_promocional
 
             session.commit()
