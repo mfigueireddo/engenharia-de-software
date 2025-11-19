@@ -7,7 +7,7 @@ home_tag = Tag(
 )
 
 def register_docs_routes(app) -> None:
-    @app.get("/", tags=[home_tag])
+    @app.get("/openapi", tags=[home_tag])
     def home():
         """Redireciona para a interface padrão de documentação."""
         return redirect("/openapi")

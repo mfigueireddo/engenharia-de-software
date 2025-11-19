@@ -14,7 +14,6 @@ body {
 }
 
 main {
-    max-width: 900px; /* Limita largura do conteúdo */
     width: 100%; /* Faz o main ocupar a largura disponível */
     padding: 20px; /* Espaçamento interno */
     text-align: center; /* Centraliza conteúdo dentro do main */

@@ -2,7 +2,13 @@ const ICON_EDIT = "✏️";
 const ICON_CONFIRM = "✅";
 const ICON_DELETE = "🗑️";
 
-// Executar get
+apiGetMultiple(
+    "http://127.0.0.1:5000/produtos",
+    "produtos",
+    (item) => {                   
+      insertList(item.nome, item.marca, item.categoria, item.preco, item.preco_promocional, item.id);
+    }
+);
 
 // Função para criar um botão close para cada item da lista
 const insertCloseButton = (parent) => 
@@ -25,9 +31,9 @@ const insertEditButton = (parent) =>
 }
 
 // Função para inserir items na lista apresentada
-const insertList = (nameProduct, quantity, price, id) => 
+const insertList = (nome, marca, categoria, preco, preco_promocional, id) => 
 {
-    var item = [nameProduct, quantity, price]
+    var item = [nome, marca, categoria, preco, preco_promocional]
     var table = document.getElementById('myTable');
     var row = table.insertRow();
 
@@ -69,9 +75,31 @@ const newItem = async () =>
     
     else 
     {
-        id = await postItem(nomeProduct, marcaProduct, categoriaProduct, precoProduct, precoPromocionalProduct)
-        insertList(nomeProduct, marcaProduct, categoriaProduct, precoProduct, precoPromocionalProduct, id)
-        alert("Item adicionado!")
+        const data = await apiPost(
+            "http://127.0.0.1:5000/produto",
+            {
+                nome: nomeProduct,
+                marca: marcaProduct,
+                categoria: categoriaProduct,
+                preco: precoProduct,
+                preco_promocional: precoPromocionalProduct ? precoPromocionalProduct : null
+            }
+        );
+
+        if (!data) {
+            alert("Erro ao adicionar item!");
+            return;
+        }
+
+        insertList(
+            nomeProduct,
+            marcaProduct,
+            categoriaProduct,
+            precoProduct,
+            precoPromocionalProduct,
+            data.id
+        );        
+        
     }
 }
 
@@ -103,8 +131,20 @@ const editElement = (table) =>
                 let preco = row.cells[3].textContent;
                 let preco_promocional = row.cells[4].textContent;
 
-                if (confirm("Deseja salvar as alterações deste item?"))
-                    patchItem(id, nome, marca, categoria, preco, preco_promocional);
+                if (confirm("Deseja salvar as alterações deste item?")) 
+                {
+                    apiPatch(
+                        "http://127.0.0.1:5000/produto", 
+                        {
+                            id: Number(id),
+                            nome: nome,
+                            marca: marca,
+                            categoria: categoria,
+                            preco: Number(preco),
+                            preco_promocional: Number(preco_promocional)
+                        })
+                    ;
+                }
 
                 for (let j = 0; j < row.cells.length - 2; j++)
                 {
@@ -133,8 +173,12 @@ const removeElement = () =>
             if (confirm("Você tem certeza?")) 
             {
                 div.remove()
-                deleteItem(nomeItem)
-                alert("Removido!")
+                apiDelete
+                (       
+                    "http://127.0.0.1:5000/produto",
+                    "nome", 
+                    nomeItem 
+                );
             }
         }
     }

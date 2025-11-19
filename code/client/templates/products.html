@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block page_title %}Produtos{% endblock %}
+
 {% block page_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
 {% endblock %}
@@ -8,11 +10,11 @@
 
 <!-- Opções para adicionar um novo item -->
 <section class="newItem">
-    <input type="text" id="newNome" placeholder="Adicionar novo item:">
-    <input type="text" id="newMarca" placeholder="Marca:">
-    <input type="text" id="newCategoria" placeholder="Categoria:">
-    <input type="text" id="newPreco" placeholder="Preço:">
-    <input type="text" id="newPrecoPromocional" placeholder="Preço promocional:">
+    <input type="text" id="newNome" placeholder="Nome">
+    <input type="text" id="newMarca" placeholder="Marca">
+    <input type="text" id="newCategoria" placeholder="Categoria">
+    <input type="text" id="newPreco" placeholder="Preço">
+    <input type="text" id="newPrecoPromocional" placeholder="Preço promocional">
     <button onclick="newItem()" class="addBtn">Adicionar</button>
 </section>
 
@@ -31,3 +33,7 @@
 </section>
     
 {% endblock %}
+
+{% block page_javascript %} 
+<script src="{{ url_for('static', filename='javascript/products.js') }}"></script>
+{% endblock %} 
