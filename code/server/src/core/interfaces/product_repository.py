@@ -20,9 +20,9 @@ class ProductRepository(ABC):
     def get_by_id(self, product_id: int) -> Optional[Product]:
         """Return a product by identifier, if present."""
 
-    @abstractmethod
-    def get_by_name(self, name: str) -> Optional[Product]:
-        """Return a product by unique name, if present."""
+    # @abstractmethod
+    # def get_by_name(self, name: str) -> Optional[Product]:
+    #     """Return a product by unique name, if present."""
 
     @abstractmethod
     def delete_by_name(self, name: str) -> bool:

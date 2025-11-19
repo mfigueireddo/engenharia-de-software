@@ -16,8 +16,8 @@ class AddProductUseCase(UseCase):
         self, nome: str, marca: str, categoria: str, preco: float, preco_promocional: Optional[float]
     ) -> Product:
         
-        if self._repository.get_by_name(nome):
-            raise ProductAlreadyExists(f"Produto '{nome}' já existe.")
+        # if self._repository.get_by_name(nome):
+        #     raise ProductAlreadyExists(f"Produto '{nome}' já existe.")
 
         product = Product(nome=nome, marca=marca, categoria=categoria, preco=preco, preco_promocional=preco_promocional)
         return self._repository.add(product)

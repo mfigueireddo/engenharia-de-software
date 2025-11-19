@@ -48,8 +48,8 @@ def register_product_routes(
                 form.nome, form.marca, form.categoria, form.preco, form.preco_promocional
             )
             return apresenta_produto(produto), 200
-        except ProductAlreadyExists as error:
-            return {"message": str(error)}, 409
+        # except ProductAlreadyExists as error:
+        #     return {"message": str(error)}, 409
         except Exception:
             return {"message": "Não foi possível salvar novo item :/"}, 400
 

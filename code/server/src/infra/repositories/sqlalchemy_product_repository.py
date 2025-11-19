@@ -58,17 +58,17 @@ class SqlAlchemyProductRepository(ProductRepository):
         finally:
             session.close()
 
-    def get_by_name(self, name: str) -> Optional[Product]:
-        session = self._session_factory()
-        try:
-            model = (
-                session.query(ProductModel)
-                .filter(ProductModel.nome == name)
-                .first()
-            )
-            return product_mapper.to_domain(model) if model else None
-        finally:
-            session.close()
+    # def get_by_name(self, name: str) -> Optional[Product]:
+    #     session = self._session_factory()
+    #     try:
+    #         model = (
+    #             session.query(ProductModel)
+    #             .filter(ProductModel.nome == name)
+    #             .first()
+    #         )
+    #         return product_mapper.to_domain(model) if model else None
+    #     finally:
+    #         session.close()
 
     def delete_by_name(self, name: str) -> bool:
         session = self._session_factory()
