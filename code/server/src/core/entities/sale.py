@@ -20,5 +20,4 @@ class Sale:
     total_amount: float
     
     id: Optional[int] = None
-    #data_venda: datetime = field(default_factory=datetime.utcnow)
     data_venda: datetime = field(default_factory=datetime.now)

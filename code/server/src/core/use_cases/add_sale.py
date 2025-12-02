@@ -9,9 +9,8 @@ from src.core.exceptions import ProductNotFound
 class AddSaleUseCase(UseCase):
     """Use case responsible for registering a new sale."""
 
-    def __init__(self, sale_repository: SaleRepository, product_repository: ProductRepository):
-        self._sale_repository = sale_repository
-        self._product_repository = product_repository
+    def __init__(self, repository: SaleRepository):
+        self._repository = repository
 
     def execute(self, items_data: List[dict]) -> Sale:
         """
