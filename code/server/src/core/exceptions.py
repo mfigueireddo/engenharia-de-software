@@ -8,3 +8,7 @@ class ProductAlreadyExists(CoreError):
 
 class ProductNotFound(CoreError):
     """Raised when a product lookup fails."""
+
+
+class SaleNotFound(CoreError):
+    """Raised when a sale lookup fails."""

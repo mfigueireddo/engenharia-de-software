@@ -7,6 +7,8 @@ from src.core.config.settings import DATABASE_DIR, DATABASE_URL
 from src.infra.db.base import Base
 from src.infra.db.models import (  # noqa: F401 - ensure metadata
     ProductModel,
+    SaleModel,
+    SaleItemModel,
 )
 
 DATABASE_DIR.mkdir(parents=True, exist_ok=True)

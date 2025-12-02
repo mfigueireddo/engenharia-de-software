@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block page_title %}Vendas{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sales.css') }}">
+{% endblock %}
+
+{% block page_content %}
+
+<!-- Opções para adicionar uma nova venda -->
+<section class="newSale">
+    <h2>Nova Venda</h2>
+    
+    <div class="sale-form">
+        <div class="product-selection">
+            <h3>Adicionar Produto</h3>
+            <select id="productSelect">
+                <option value="">Selecione um produto</option>
+            </select>
+            <input type="number" id="productQuantity" placeholder="Quantidade" min="1" value="1">
+            <button onclick="addProductToSale()" class="addProductBtn">Adicionar à Venda</button>
+        </div>
+        
+        <div class="sale-items">
+            <h3>Itens da Venda</h3>
+            <table id="saleItemsTable">
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço Unit.</th>
+                    <th>Quantidade</th>
+                    <th>Total</th>
+                    <th>Ação</th>
+                </tr>
+            </table>
+            
+            <div class="sale-total">
+                <strong>Total da Venda: R$ <span id="saleTotal">0.00</span></strong>
+            </div>
+            
+            <button onclick="finalizeSale()" class="finalizeBtn" disabled>Finalizar Venda</button>
+        </div>
+    </div>
+</section>
+
+<!-- Tabela com vendas existentes -->
+<section class="sales">
+    <h2>Vendas Realizadas</h2>
+    <table id="salesTable">
+        <tr>
+            <th>ID</th>
+            <th>Data/Hora</th>
+            <th>Total</th>
+            <th>Ações</th>
+        </tr>
+    </table>
+</section>
+    
+{% endblock %}
+
+{% block page_javascript %} 
+<script src="{{ url_for('static', filename='javascript/sales.js') }}"></script>
+{% endblock %}

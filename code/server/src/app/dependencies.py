@@ -13,6 +13,13 @@ from src.core.use_cases.edit_product import EditProductUseCase
 from src.core.use_cases.list_products import ListProductsUseCase
 from src.core.use_cases.delete_product import DeleteProductUseCase
 
+# ======= Vendas =======
+from src.infra.repositories.sqlalchemy_sale_repository import SqlAlchemySaleRepository
+from src.core.use_cases.add_sale import AddSaleUseCase
+from src.core.use_cases.get_sale import GetSaleUseCase
+from src.core.use_cases.list_sales import ListSalesUseCase
+from src.core.use_cases.delete_sale import DeleteSaleUseCase
+
 @lru_cache
 def get_env_config_service() -> EnvConfigService:
     return EnvConfigService()
@@ -50,3 +57,25 @@ def get_edit_product_use_case() -> EditProductUseCase:
 @lru_cache
 def get_delete_product_use_case() -> DeleteProductUseCase:
     return DeleteProductUseCase(get_product_repository())
+
+# ======= Vendas =======
+
+@lru_cache
+def get_sale_repository() -> SqlAlchemySaleRepository:
+    return SqlAlchemySaleRepository(SessionLocal)
+
+@lru_cache
+def get_add_sale_use_case() -> AddSaleUseCase:
+    return AddSaleUseCase(get_sale_repository(), get_product_repository())
+
+@lru_cache
+def get_get_sale_use_case() -> GetSaleUseCase:
+    return GetSaleUseCase(get_sale_repository())
+
+@lru_cache
+def get_list_sales_use_case() -> ListSalesUseCase:
+    return ListSalesUseCase(get_sale_repository())
+
+@lru_cache
+def get_delete_sale_use_case() -> DeleteSaleUseCase:
+    return DeleteSaleUseCase(get_sale_repository())

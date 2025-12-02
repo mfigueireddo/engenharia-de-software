@@ -8,7 +8,12 @@ from src.app.dependencies import (
     get_get_product_use_case,
     get_list_products_use_case,
     get_edit_product_use_case,
-    get_delete_product_use_case
+    get_delete_product_use_case,
+
+    get_add_sale_use_case,
+    get_get_sale_use_case,
+    get_list_sales_use_case,
+    get_delete_sale_use_case
 )
 from src.app.routes import (
     register_docs_routes,
@@ -17,6 +22,7 @@ from src.app.routes import (
 
     register_product_routes
 )
+from src.app.routes.sale_routes import register_sale_routes
 from src.infra.logging import configure_logging
 import os
 
@@ -57,6 +63,15 @@ def create_app() -> OpenAPI:
         list_use_case=get_list_products_use_case(),
         edit_use_case= get_edit_product_use_case(),
         delete_use_case=get_delete_product_use_case()
+    )
+
+    # ======= Vendas =======
+    register_sale_routes(
+        application,
+        add_use_case=get_add_sale_use_case(),
+        get_use_case=get_get_sale_use_case(),
+        list_use_case=get_list_sales_use_case(),
+        delete_use_case=get_delete_sale_use_case()
     )
     
 
