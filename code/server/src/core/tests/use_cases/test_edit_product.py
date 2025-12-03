@@ -26,7 +26,7 @@ def test_execute_updates_existing_product_and_returns_updated_entity():
         marca="MarcaNova",
         categoria="Higiene",
         preco=6.0,
-        preco_promocional=4.0,  # continua 4.0 porque preco_promocional=None não altera
+        preco_promocional=4.0,
     )
     repo.update.return_value = updated_product
 
@@ -54,7 +54,6 @@ def test_execute_updates_existing_product_and_returns_updated_entity():
     assert called_product.marca == "MarcaNova"
     assert called_product.preco == 6.0
 
-    # campos não atualizados permanecem
     assert called_product.nome == "Sabonete"
     assert called_product.categoria == "Higiene"
     assert called_product.preco_promocional == 4.0

@@ -1,5 +1,3 @@
-# src/core/tests/use_cases/test_list_products.py
-
 import pytest
 from unittest.mock import Mock
 
