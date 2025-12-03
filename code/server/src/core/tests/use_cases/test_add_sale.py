@@ -3,7 +3,7 @@ from unittest.mock import Mock
 
 from src.core.use_cases.add_sale import AddSaleUseCase
 from src.core.interfaces.sale_repository import SaleRepository
-from src.core.entities.sale import Sale  # usado apenas para especificação de mocks, se existir
+from src.core.entities.sale import Sale
 
 
 def test_execute_adds_sale_and_returns_repository_result():
